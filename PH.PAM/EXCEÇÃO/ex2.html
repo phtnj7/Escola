@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 2</title>
+  <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+
+  <h1>Exercício 2 - Cadastro Completo</h1>
+
+  <ul id="listaErros"></ul>
+
+  <form>
+    <label>Nome:</label>
+    <input type="text" id="nome" placeholder="Seu Nome Completo"/><br>
+    <span class="erro" id="erroNome"></span>
+
+    <label>CPF:</label>
+    <input type="text" id="cpf" placeholder="00000000000 (11 dígitos)"/><br>
+    <span class="erro" id="erroCpf"></span>
+
+    <label>Data de Nascimento:</label>
+    <input type="date" id="nascimento" /><br>
+    <span class="erro" id="erroNascimento"></span>
+
+    <label>Senha:</label>
+    <input type="password" id="senha" placeholder="Mínimo 6 caracteres"/><br>
+    <span class="erro" id="erroSenha"></span>
+
+    <label>Confirmar Senha:</label>
+    <input type="password" id="confirma" placeholder="Repita a senha" /><br>
+    <span class="erro" id="erroConfirma"></span>
+
+    <button type="button" onclick="enviarForm()">Cadastrar</button>
+    <p class="sucesso" id="sucesso"></p>
+  </form>
+
+  <script src="script2.js"></script>
+</body>
+</html>

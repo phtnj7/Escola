@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 1</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+
+  <h1>Exercício 1 - Cadastro Simples</h1>
+
+  <form>
+    <label>Nome:</label>
+    <input type="text" id="nome" placeholder="Seu Nome Completo" /><br>
+    <span class="erro" id="erroNome"></span>
+
+    <label>E-mail:</label>
+    <input type="text" id="email" placeholder="seu@email.com"/><br>
+    <span class="erro" id="erroEmail"></span>
+
+    <label>Idade:</label>
+    <input type="text" id="idade" placeholder="18"/><br>
+    <span class="erro" id="erroIdade"></span>
+
+    <label>Senha:</label>
+    <input type="password" id="senha" placeholder="Mínimo 6 caracteres" /><br>
+    <span class="erro" id="erroSenha"></span>
+
+    <button type="button" onclick="enviarForm()">Cadastrar</button>
+    <p class="sucesso" id="sucesso"></p>
+  </form>
+
+  <script src="script1.js"></script>
+</body>
+</html>
