@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Estruturas de Dados</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    h1 { text-align: center; }
+    h2 { margin-top: 30px; color: #333; border-bottom: 2px solid #333; padding-bottom: 4px; }
+    pre { background: #1e1e1e; color: #d4d4d4; padding: 14px; border-radius: 6px; font-size: 14px; }
+    button { margin-top: 8px; padding: 7px 16px; cursor: pointer; background: #4a90e2; color: white; border: none; border-radius: 4px; }
+    .saida { margin-top: 8px; background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; font-family: monospace; white-space: pre; display: none; }
+  </style>
+</head>
+<body>
+
+<h1>Estruturas de Dados — Exemplos</h1>
+
+<h2>1. Array</h2>
+<pre>
+const frutas = ["maçã", "banana", "laranja"];
+frutas.push("uva");
+console.log(frutas);
+console.log("Primeira:", frutas[0]);
+</pre>
+<button onclick="rodar('array')">Executar</button>
+<div class="saida" id="array"></div>
+
+<h2>2. Lista Ligada Simples</h2>
+<pre>
+const a = new No(1);
+const b = new No(2);
+const c = new No(3);
+a.proximo = b;
+b.proximo = c;
+
+let atual = a;
+while (atual != null) {
+  console.log(atual.valor);
+  atual = atual.proximo;
+}
+</pre>
+<button onclick="rodar('listaSimples')">Executar</button>
+<div class="saida" id="listaSimples"></div>
+
+<h2>3. Lista Duplamente Ligada</h2>
+<pre>
+const n1 = new NoDuplo(10);
+const n2 = new NoDuplo(20);
+const n3 = new NoDuplo(30);
+n1.proximo = n2; n2.anterior = n1;
+n2.proximo = n3; n3.anterior = n2;
+
+let cur = n1;
+while (cur) { console.log("→", cur.valor); cur = cur.proximo; }
+cur = n3;
+while (cur) { console.log("←", cur.valor); cur = cur.anterior; }
+</pre>
+<button onclick="rodar('listaDupla')">Executar</button>
+<div class="saida" id="listaDupla"></div>
+
+<h2>4. Lista Circular</h2>
+<pre>
+const x = new No(1);
+const y = new No(2);
+const z = new No(3);
+x.proximo = y; y.proximo = z;
+z.proximo = x; // volta pro início
+
+let n = x;
+for (let i = 0; i < 6; i++) {
+  console.log(n.valor);
+  n = n.proximo;
+}
+</pre>
+<button onclick="rodar('listaCircular')">Executar</button>
+<div class="saida" id="listaCircular"></div>
+
+<h2>5. Pilha (Stack)</h2>
+<pre>
+const pilha = [];
+pilha.push(10); pilha.push(20); pilha.push(30);
+console.log("Pilha:", pilha);
+console.log("Removido:", pilha.pop());
+console.log("Pilha agora:", pilha);
+</pre>
+<button onclick="rodar('pilha')">Executar</button>
+<div class="saida" id="pilha"></div>
+
+<h2>6. Fila (Queue)</h2>
+<pre>
+const fila = [];
+fila.push("A"); fila.push("B"); fila.push("C");
+console.log("Fila:", fila);
+console.log("Removido:", fila.shift());
+console.log("Fila agora:", fila);
+</pre>
+<button onclick="rodar('fila')">Executar</button>
+<div class="saida" id="fila"></div>
+
+<h2>7. Alocação Dinâmica</h2>
+<pre>
+let pessoa = { nome: "João", idade: 20 };
+console.log(pessoa);
+pessoa = null;
+console.log("Após liberar:", pessoa);
+</pre>
+<button onclick="rodar('alocacao')">Executar</button>
+<div class="saida" id="alocacao"></div>
+
+<h2>8. Recursividade</h2>
+<pre>
+function fatorial(n) {
+  if (n == 0) return 1;
+  return n * fatorial(n - 1);
+}
+console.log("4! =", fatorial(4));
+console.log("5! =", fatorial(5));
+</pre>
+<button onclick="rodar('recursividade')">Executar</button>
+<div class="saida" id="recursividade"></div>
+
+<h2>9. Lista Encadeada (com classe)</h2>
+<pre>
+const lista = new Lista();
+lista.adicionar(1);
+lista.adicionar(2);
+lista.adicionar(3);
+lista.mostrar();
+</pre>
+<button onclick="rodar('encadeada')">Executar</button>
+<div class="saida" id="encadeada"></div>
+
+<h2>10. Tabela Hash</h2>
+<pre>
+const tabela = {};
+tabela["nome"] = "Maria";
+tabela["idade"] = 22;
+tabela["curso"] = "TI";
+console.log(tabela["nome"]);
+console.log(tabela["idade"]);
+console.log(tabela["curso"]);
+</pre>
+<button onclick="rodar('hash')">Executar</button>
+<div class="saida" id="hash"></div>
+
+<h2>11. Árvore Binária</h2>
+<pre>
+const raiz = new NoArvore(5);
+raiz.esq = new NoArvore(3);
+raiz.dir = new NoArvore(8);
+raiz.esq.esq = new NoArvore(1);
+raiz.esq.dir = new NoArvore(4);
+emOrdem(raiz);
+</pre>
+<button onclick="rodar('arvore')">Executar</button>
+<div class="saida" id="arvore"></div>
+
+<h2>12. Ordenação (Bubble Sort)</h2>
+<pre>
+console.log("Antes:", [5, 3, 8, 1, 4]);
+console.log("Depois:", bubbleSort([5, 3, 8, 1, 4]));
+</pre>
+<button onclick="rodar('ordenacao')">Executar</button>
+<div class="saida" id="ordenacao"></div>
+
+<h2>13. Busca Linear e Binária</h2>
+<pre>
+const numeros = [10, 20, 30, 40, 50];
+console.log("Linear — buscar 30:", buscaLinear(numeros, 30));
+console.log("Binária — buscar 40:", buscaBinaria(numeros, 40));
+console.log("Binária — buscar 99:", buscaBinaria(numeros, 99));
+</pre>
+<button onclick="rodar('busca')">Executar</button>
+<div class="saida" id="busca"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
