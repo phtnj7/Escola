@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Dados - JavaScript</title>
+
+```
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f1f5f9;
+        color: #1e293b;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    header {
+        background: #2563eb;
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    section {
+        background: white;
+        padding: 25px;
+        margin: 20px 0;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+        color: #2563eb;
+        border-bottom: 2px solid #dbeafe;
+        padding-bottom: 8px;
+    }
+
+    button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        margin: 5px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #1d4ed8;
+    }
+
+    .resultado {
+        background: #0f172a;
+        color: #22c55e;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 8px;
+        min-height: 40px;
+        white-space: pre-wrap;
+        font-family: monospace;
+    }
+
+    code {
+        background: #e2e8f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+    <h1>Estruturas de Dados e Algoritmos</h1>
+    <p>Exemplos práticos em HTML + JavaScript</p>
+</header>
+
+<main>
+
+```
+<!-- ARRAYS -->
+<section>
+    <h2>1. Arrays</h2>
+    <p>
+        Array armazena vários valores em uma única estrutura.
+        Os índices começam em 0.
+    </p>
+
+    <button onclick="demonstrarArray()">Executar Array</button>
+
+    <div id="arrayResultado" class="resultado"></div>
+</section>
+
+
+<!-- LISTA SIMPLES -->
+<section>
+    <h2>2. Lista simplesmente ligada</h2>
+
+    <button onclick="demonstrarListaSimples()">
+        Executar Lista Simples
+    </button>
+
+    <div id="listaResultado" class="resultado"></div>
+</section>
+
+
+<!-- LISTA DUPLA -->
+<section>
+    <h2>3. Lista duplamente ligada</h2>
+
+    <button onclick="demonstrarListaDupla()">
+        Executar Lista Dupla
+    </button>
+
+    <div id="duplaResultado" class="resultado"></div>
+</section>
+
+
+<!-- LISTA CIRCULAR -->
+<section>
+    <h2>4. Lista circular</h2>
+
+    <button onclick="demonstrarListaCircular()">
+        Executar Lista Circular
+    </button>
+
+    <div id="circularResultado" class="resultado"></div>
+</section>
+
+
+<!-- PILHA -->
+<section>
+    <h2>5. Pilha - LIFO</h2>
+
+    <p>
+        LIFO = Last In, First Out.
+        O último elemento inserido é o primeiro a sair.
+    </p>
+
+    <button onclick="demonstrarPilha()">Executar Pilha</button>
+
+    <div id="pilhaResultado" class="resultado"></div>
+</section>
+
+
+<!-- FILA -->
+<section>
+    <h2>6. Fila - FIFO</h2>
+
+    <p>
+        FIFO = First In, First Out.
+        O primeiro elemento inserido é o primeiro a sair.
+    </p>
+
+    <button onclick="demonstrarFila()">Executar Fila</button>
+
+    <div id="filaResultado" class="resultado"></div>
+</section>
+
+
+<!-- ALOCAÇÃO DINÂMICA -->
+<section>
+    <h2>7. Alocação dinâmica</h2>
+
+    <p>
+        No JavaScript, objetos são criados dinamicamente e a memória
+        é administrada automaticamente pelo garbage collector.
+    </p>
+
+    <button onclick="demonstrarMemoria()">
+        Demonstrar
+    </button>
+
+    <div id="memoriaResultado" class="resultado"></div>
+</section>
+
+
+<!-- RECURSIVIDADE -->
+<section>
+    <h2>8. Recursividade</h2>
+
+    <button onclick="demonstrarRecursividade()">
+        Calcular Fatorial
+    </button>
+
+    <div id="recursividadeResultado" class="resultado"></div>
+</section>
+
+
+<!-- HASH -->
+<section>
+    <h2>9. Tabela de espalhamento (Hash Table)</h2>
+
+    <button onclick="demonstrarHash()">
+        Executar Hash Table
+    </button>
+
+    <div id="hashResultado" class="resultado"></div>
+</section>
+
+
+<!-- ÁRVORE -->
+<section>
+    <h2>10. Árvore Binária de Busca</h2>
+
+    <button onclick="demonstrarArvore()">
+        Executar Árvore
+    </button>
+
+    <div id="arvoreResultado" class="resultado"></div>
+</section>
+
+
+<!-- ORDENAÇÃO -->
+<section>
+    <h2>11. Métodos de ordenação</h2>
+
+    <button onclick="demonstrarOrdenacao()">
+        Executar Ordenações
+    </button>
+
+    <div id="ordenacaoResultado" class="resultado"></div>
+</section>
+
+
+<!-- BUSCA -->
+<section>
+    <h2>12. Métodos de busca</h2>
+
+    <button onclick="demonstrarBusca()">
+        Executar Buscas
+    </button>
+
+    <div id="buscaResultado" class="resultado"></div>
+</section>
+```
+
+</main>
+
+<script>
+
+/* =========================================================
+   1. ARRAY
+========================================================= */
+
+function demonstrarArray() {
+
+    let numeros = [10, 20, 30, 40];
+
+    numeros.push(50);
+
+    let removido = numeros.pop();
+
+    document.getElementById("arrayResultado").textContent =
+        "Array: " + numeros.join(", ") +
+        "\nPrimeiro elemento: " + numeros[0] +
+        "\nElemento removido: " + removido +
+        "\nTamanho: " + numeros.length;
+}
+
+
+/* =========================================================
+   2. LISTA SIMPLESMENTE LIGADA
+========================================================= */
+
+class NoSimples {
+
+    constructor(valor) {
+        this.valor = valor;
+        this.proximo = null;
+    }
+}
+
+
+class ListaSimples {
+
+    constructor() {
+        this.inicio = null;
+    }
+
+    adicionar(valor) {
+
+        let novo = new NoSimples(valor);
+
+        if (this.inicio === null) {
+            this.inicio = novo;
+            return;
+        }
+
+        let atual = this.inicio;
+
+        while (atual.proximo !== null) {
+            atual = atual.proximo;
+        }
+
+        atual.proximo = novo;
+    }
+
+    exibir() {
+
+        let valores = [];
+        let atual = this.inicio;
+
+        while (atual !== null) {
+            valores.push(atual.valor);
+            atual = atual.proximo;
+        }
+
+        return valores.join(" -> ");
+    }
+}
+
+
+function demonstrarListaSimples() {
+
+    let lista = new ListaSimples();
+
+    lista.adicionar(10);
+    lista.adicionar(20);
+    lista.adicionar(30);
+
+    document.getElementById("listaResultado").textContent =
+        lista.exibir() + " -> null";
+}
+
+
+/* =========================================================
+   3. LISTA DUPLAMENTE LIGADA
+========================================================= */
+
+class NoDuplo {
+
+    constructor(valor) {
+        this.valor = valor;
+        this.anterior = null;
+        this.proximo = null;
+    }
+}
+
+
+class ListaDupla {
+
+    constructor() {
+        this.inicio = null;
+        this.fim = null;
+    }
+
+    adicionar(valor) {
+
+        let novo = new NoDuplo(valor);
+
+        if (this.inicio === null) {
+
+            this.inicio = novo;
+            this.fim = novo;
+
+        } else {
+
+            novo.anterior = this.fim;
+            this.fim.proximo = novo;
+            this.fim = novo;
+        }
+    }
+
+    frente() {
+
+        let resultado = [];
+        let atual = this.inicio;
+
+        while (atual !== null) {
+            resultado.push(atual.valor);
+            atual = atual.proximo;
+        }
+
+        return resultado.join(" <-> ");
+    }
+
+    tras() {
+
+        let resultado = [];
+        let atual = this.fim;
+
+        while (atual !== null) {
+            resultado.push(atual.valor);
+            atual = atual.anterior;
+        }
+
+        return resultado.join(" <-> ");
+    }
+}
+
+
+function demonstrarListaDupla() {
+
+    let lista = new ListaDupla();
+
+    lista.adicionar(10);
+    lista.adicionar(20);
+    lista.adicionar(30);
+
+    document.getElementById("duplaResultado").textContent =
+        "Frente: " + lista.frente() +
+        "\nTrás: " + lista.tras();
+}
+
+
+/* =========================================================
+   4. LISTA CIRCULAR
+========================================================= */
+
+class ListaCircular {
+
+    constructor() {
+        this.inicio = null;
+    }
+
+    adicionar(valor) {
+
+        let novo = {
+            valor: valor,
+            proximo: null
+        };
+
+        if (this.inicio === null) {
+
+            this.inicio = novo;
+            novo.proximo = novo;
+
+            return;
+        }
+
+        let atual = this.inicio;
+
+        while (atual.proximo !== this.inicio) {
+            atual = atual.proximo;
+        }
+
+        atual.proximo = novo;
+        novo.proximo = this.inicio;
+    }
+
+    exibir(quantidade) {
+
+        let resultado = [];
+        let atual = this.inicio;
+
+        for (let i = 0; i < quantidade; i++) {
+            resultado.push(atual.valor);
+            atual = atual.proximo;
+        }
+
+        return resultado.join(" -> ") + " -> ...";
+    }
+}
+
+
+function demonstrarListaCircular() {
+
+    let lista = new ListaCircular();
+
+    lista.adicionar("A");
+    lista.adicionar("B");
+    lista.adicionar("C");
+
+    document.getElementById("circularResultado").textContent =
+        lista.exibir(6);
+}
+
+
+/* =========================================================
+   5. PILHA
+========================================================= */
+
+class Pilha {
+
+    constructor() {
+        this.itens = [];
+    }
+
+    push(valor) {
+        this.itens.push(valor);
+    }
+
+    pop() {
+        return this.itens.pop();
+    }
+
+    peek() {
+        return this.itens[this.itens.length - 1];
+    }
+}
+
+
+function demonstrarPilha() {
+
+    let pilha = new Pilha();
+
+    pilha.push(10);
+    pilha.push(20);
+    pilha.push(30);
+
+    let topo = pilha.peek();
+    let removido = pilha.pop();
+
+    document.getElementById("pilhaResultado").textContent =
+        "Pilha: " + pilha.itens.join(", ") +
+        "\nTopo antes da remoção: " + topo +
+        "\nElemento removido: " + removido;
+}
+
+
+/* =========================================================
+   6. FILA
+========================================================= */
+
+class Fila {
+
+    constructor() {
+        this.itens = [];
+    }
+
+    enqueue(valor) {
+        this.itens.push(valor);
+    }
+
+    dequeue() {
+        return this.itens.shift();
+    }
+
+    front() {
+        return this.itens[0];
+    }
+}
+
+
+function demonstrarFila() {
+
+    let fila = new Fila();
+
+    fila.enqueue("João");
+    fila.enqueue("Maria");
+    fila.enqueue("Pedro");
+
+    let primeiro = fila.front();
+    let atendido = fila.dequeue();
+
+    document.getElementById("filaResultado").textContent =
+        "Fila: " + fila.itens.join(", ") +
+        "\nPrimeiro da fila: " + primeiro +
+        "\nAtendido: " + atendido;
+}
+
+
+/* =========================================================
+   7. ALOCAÇÃO DINÂMICA / MEMÓRIA
+========================================================= */
+
+function demonstrarMemoria() {
+
+    let pessoa = {
+        nome: "Aluno",
+        idade: 20
+    };
+
+    let mensagem =
+        "Objeto criado dinamicamente:\n" +
+        JSON.stringify(pessoa) +
+        "\n\nO objeto será mantido enquanto houver referências para ele.";
+
+    pessoa = null;
+
+    mensagem +=
+        "\n\nA referência foi removida.";
+    mensagem +=
+        "\nO garbage collector do JavaScript pode recuperar essa memória posteriormente.";
+
+    document.getElementById("memoriaResultado").textContent = mensagem;
+}
+
+
+/* =========================================================
+   8. RECURSIVIDADE
+========================================================= */
+
+function fatorial(n) {
+
+    if (n <= 1) {
+        return 1;
+    }
+
+    return n * fatorial(n - 1);
+}
+
+
+function demonstrarRecursividade() {
+
+    let numero = 5;
+    let resultado = fatorial(numero);
+
+    document.getElementById("recursividadeResultado").textContent =
+        numero + "! = " + resultado;
+}
+
+
+/* =========================================================
+   9. TABELA HASH
+========================================================= */
+
+class TabelaHash {
+
+    constructor(tamanho = 10) {
+
+        this.tamanho = tamanho;
+        this.tabela = new Array(tamanho);
+    }
+
+    hash(chave) {
+
+        let soma = 0;
+
+        for (let i = 0; i < chave.length; i++) {
+            soma += chave.charCodeAt(i);
+        }
+
+        return soma % this.tamanho;
+    }
+
+    inserir(chave, valor) {
+
+        let indice = this.hash(chave);
+
+        if (!this.tabela[indice]) {
+            this.tabela[indice] = [];
+        }
+
+        this.tabela[indice].push({
+            chave: chave,
+            valor: valor
+        });
+    }
+
+    buscar(chave) {
+
+        let indice = this.hash(chave);
+        let lista = this.tabela[indice] || [];
+
+        for (let item of lista) {
+
+            if (item.chave === chave) {
+                return item.valor;
+            }
+        }
+
+        return undefined;
+    }
+}
+
+
+function demonstrarHash() {
+
+    let tabela = new TabelaHash();
+
+    tabela.inserir("nome", "João");
+    tabela.inserir("idade", 20);
+    tabela.inserir("curso", "Informática");
+
+    document.getElementById("hashResultado").textContent =
+        "nome: " + tabela.buscar("nome") +
+        "\nidade: " + tabela.buscar("idade") +
+        "\ncurso: " + tabela.buscar("curso");
+}
+
+
+/* =========================================================
+   10. ÁRVORE BINÁRIA DE BUSCA
+========================================================= */
+
+class NoArvore {
+
+    constructor(valor) {
+
+        this.valor = valor;
+        this.esquerda = null;
+        this.direita = null;
+    }
+}
+
+
+class ArvoreBinaria {
+
+    constructor() {
+        this.raiz = null;
+    }
+
+    inserir(valor) {
+
+        this.raiz = this.inserirRecursivo(
+            this.raiz,
+            valor
+        );
+    }
+
+    inserirRecursivo(no, valor) {
+
+        if (no === null) {
+            return new NoArvore(valor);
+        }
+
+        if (valor < no.valor) {
+
+            no.esquerda =
+                this.inserirRecursivo(
+                    no.esquerda,
+                    valor
+                );
+
+        } else {
+
+            no.direita =
+                this.inserirRecursivo(
+                    no.direita,
+                    valor
+                );
+        }
+
+        return no;
+    }
+
+    emOrdem(no, resultado = []) {
+
+        if (no !== null) {
+
+            this.emOrdem(no.esquerda, resultado);
+
+            resultado.push(no.valor);
+
+            this.emOrdem(no.direita, resultado);
+        }
+
+        return resultado;
+    }
+}
+
+
+function demonstrarArvore() {
+
+    let arvore = new ArvoreBinaria();
+
+    let valores = [
+        50, 30, 70, 20, 40, 60, 80
+    ];
+
+    valores.forEach(valor => {
+        arvore.inserir(valor);
+    });
+
+    document.getElementById("arvoreResultado").textContent =
+        "Valores inseridos: " + valores.join(", ") +
+        "\nPercurso em ordem: " +
+        arvore.emOrdem(arvore.raiz).join(", ");
+}
+
+
+/* =========================================================
+   11. MÉTODOS DE ORDENAÇÃO
+========================================================= */
+
+
+/* ---------- BUBBLE SORT ---------- */
+
+function bubbleSort(array) {
+
+    let arr = [...array];
+
+    for (let i = 0; i < arr.length; i++) {
+
+        for (let j = 0; j < arr.length - i - 1; j++) {
+
+            if (arr[j] > arr[j + 1]) {
+
+                let temp = arr[j];
+
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    return arr;
+}
+
+
+/* ---------- SELECTION SORT ---------- */
+
+function selectionSort(array) {
+
+    let arr = [...array];
+
+    for (let i = 0; i < arr.length; i++) {
+
+        let menor = i;
+
+        for (let j = i + 1; j < arr.length; j++) {
+
+            if (arr[j] < arr[menor]) {
+                menor = j;
+            }
+        }
+
+        let temp = arr[i];
+
+        arr[i] = arr[menor];
+        arr[menor] = temp;
+    }
+
+    return arr;
+}
+
+
+/* ---------- INSERTION SORT ---------- */
+
+function insertionSort(array) {
+
+    let arr = [...array];
+
+    for (let i = 1; i < arr.length; i++) {
+
+        let atual = arr[i];
+        let j = i - 1;
+
+        while (
+            j >= 0 &&
+            arr[j] > atual
+        ) {
+
+            arr[j + 1] = arr[j];
+
+            j--;
+        }
+
+        arr[j + 1] = atual;
+    }
+
+    return arr;
+}
+
+
+/* ---------- MERGE SORT ---------- */
+
+function mergeSort(array) {
+
+    if (array.length <= 1) {
+        return array;
+    }
+
+    let meio = Math.floor(array.length / 2);
+
+    let esquerda =
+        mergeSort(array.slice(0, meio));
+
+    let direita =
+        mergeSort(array.slice(meio));
+
+    return merge(esquerda, direita);
+}
+
+
+function merge(esquerda, direita) {
+
+    let resultado = [];
+
+    while (
+        esquerda.length &&
+        direita.length
+    ) {
+
+        if (esquerda[0] < direita[0]) {
+            resultado.push(esquerda.shift());
+        } else {
+            resultado.push(direita.shift());
+        }
+    }
+
+    return resultado.concat(
+        esquerda,
+        direita
+    );
+}
+
+
+/* ---------- QUICK SORT ---------- */
+
+function quickSort(array) {
+
+    if (array.length <= 1) {
+        return array;
+    }
+
+    let pivo =
+        array[array.length - 1];
+
+    let menores = [];
+    let maiores = [];
+
+    for (
+        let i = 0;
+        i < array.length - 1;
+        i++
+    ) {
+
+        if (array[i] < pivo) {
+            menores.push(array[i]);
+        } else {
+            maiores.push(array[i]);
+        }
+    }
+
+    return [
+        ...quickSort(menores),
+        pivo,
+        ...quickSort(maiores)
+    ];
+}
+
+
+function demonstrarOrdenacao() {
+
+    let dados = [
+        64, 25, 12, 22, 11
+    ];
+
+    let resultado =
+        "Array original: " +
+        dados.join(", ");
+
+    resultado +=
+        "\n\nBubble Sort: " +
+        bubbleSort(dados).join(", ");
+
+    resultado +=
+        "\nSelection Sort: " +
+        selectionSort(dados).join(", ");
+
+    resultado +=
+        "\nInsertion Sort: " +
+        insertionSort(dados).join(", ");
+
+    resultado +=
+        "\nMerge Sort: " +
+        mergeSort(dados).join(", ");
+
+    resultado +=
+        "\nQuick Sort: " +
+        quickSort(dados).join(", ");
+
+    document.getElementById(
+        "ordenacaoResultado"
+    ).textContent = resultado;
+}
+
+
+/* =========================================================
+   12. MÉTODOS DE BUSCA
+========================================================= */
+
+
+/* ---------- BUSCA LINEAR ---------- */
+
+function buscaLinear(array, valor) {
+
+    for (let i = 0; i < array.length; i++) {
+
+        if (array[i] === valor) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+
+/* ---------- BUSCA BINÁRIA ---------- */
+
+function buscaBinaria(array, valor) {
+
+    let inicio = 0;
+    let fim = array.length - 1;
+
+    while (inicio <= fim) {
+
+        let meio =
+            Math.floor(
+                (inicio + fim) / 2
+            );
+
+        if (array[meio] === valor) {
+            return meio;
+        }
+
+        if (array[meio] < valor) {
+
+            inicio = meio + 1;
+
+        } else {
+
+            fim = meio - 1;
+        }
+    }
+
+    return -1;
+}
+
+
+function demonstrarBusca() {
+
+    let dados = [
+        10, 20, 30, 40, 50, 60, 70
+    ];
+
+    let valor = 60;
+
+    let linear =
+        buscaLinear(dados, valor);
+
+    let binaria =
+        buscaBinaria(dados, valor);
+
+    document.getElementById(
+        "buscaResultado"
+    ).textContent =
+        "Array: " + dados.join(", ") +
+        "\nValor procurado: " + valor +
+        "\n\nBusca Linear encontrou no índice: " +
+        linear +
+        "\nBusca Binária encontrou no índice: " +
+        binaria;
+}
+
+</script>
+
+</body>
+</html>
+
