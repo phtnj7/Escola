@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de RH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+    <div>
+        <h1>Sistema de Gestão de RH</h1>
+        <p>Administração de Recursos Humanos</p>
+    </div>
+
+    <div class="usuario-area">
+        <span id="usuarioLogado">Administrador</span>
+        <button id="btnSair" class="btn-sair">Sair</button>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="resumo">
+        <div class="card-resumo">
+            <h3>Funcionários</h3>
+            <strong id="totalFuncionarios">0</strong>
+        </div>
+
+        <div class="card-resumo">
+            <h3>Departamentos</h3>
+            <strong id="totalDepartamentos">0</strong>
+        </div>
+
+        <div class="card-resumo">
+            <h3>Funcionários ativos</h3>
+            <strong id="totalAtivos">0</strong>
+        </div>
+    </section>
+
+    <!-- DEPARTAMENTOS -->
+    <section class="painel">
+        <h2>Gerenciamento de Departamentos</h2>
+
+        <form id="formDepartamento" class="formulario">
+            <input
+                type="text"
+                id="nomeDepartamento"
+                placeholder="Nome do departamento"
+                required
+            >
+
+            <input
+                type="text"
+                id="localizacaoDepartamento"
+                placeholder="Localização"
+            >
+
+            <button type="submit">Cadastrar departamento</button>
+        </form>
+
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Departamento</th>
+                        <th>Localização</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="listaDepartamentos"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FUNCIONÁRIOS -->
+    <section class="painel">
+        <h2>Gerenciamento de Funcionários</h2>
+
+        <form id="formFuncionario" class="formulario">
+
+            <input type="hidden" id="funcionarioId">
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Nome completo"
+                required
+            >
+
+            <input
+                type="text"
+                id="funcao"
+                placeholder="Cargo / Função"
+            >
+
+            <input
+                type="number"
+                id="salario"
+                placeholder="Salário"
+                min="0"
+                step="0.01"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="E-mail"
+            >
+
+            <label for="dataAdmissao">Data de admissão</label>
+            <input type="date" id="dataAdmissao">
+
+            <select id="status">
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+            </select>
+
+            <select id="departamentoId">
+                <option value="">Selecione o departamento</option>
+            </select>
+
+            <button type="submit" id="btnSalvar">
+                Cadastrar funcionário
+            </button>
+
+            <button type="button" id="btnCancelar" class="btn-cancelar" hidden>
+                Cancelar edição
+            </button>
+        </form>
+
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Função</th>
+                        <th>Salário</th>
+                        <th>E-mail</th>
+                        <th>Admissão</th>
+                        <th>Status</th>
+                        <th>Departamento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaFuncionarios"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <p id="mensagemSistema"></p>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

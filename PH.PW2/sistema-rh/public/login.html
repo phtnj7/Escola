@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema RH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <div class="login-container">
+        <div class="login-icon">👤</div>
+
+        <h1>Sistema de Gestão de RH</h1>
+        <p>Acesse sua conta administrativa</p>
+
+        <form id="formLogin">
+            <label for="login">Usuário</label>
+            <input
+                type="text"
+                id="login"
+                placeholder="Digite seu usuário"
+                required
+                autocomplete="username"
+            >
+
+            <label for="senha">Senha</label>
+            <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                required
+                autocomplete="current-password"
+            >
+
+            <button type="submit">Entrar no sistema</button>
+
+            <p id="mensagem"></p>
+        </form>
+
+        <footer>© 2026 - Sistema de Gestão de RH</footer>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
