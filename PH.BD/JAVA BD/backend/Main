@@ -1,0 +1,26 @@
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        FuncionarioDAO dao = new FuncionarioDAO();
+
+        Funcionario funcionario = new Funcionario("João Silva", "joao@email.com");
+        dao.inserir(funcionario);
+
+        List<Funcionario> funcionarios = dao.buscarTodos();
+        for (Funcionario f : funcionarios) {
+            System.out.println(f.getId() + " - " + f.getNome() + " - " + f.getEmail());
+        }
+
+        Funcionario f = dao.buscarPorId(1);
+        if (f != null) {
+            System.out.println("Encontrado: " + f.getNome());
+            f.setNome("João Santos");
+            f.setEmail("joao.santos@email.com");
+            dao.atualizar(f);
+        }
+
+        // dao.deletar(1);
+    }
+}
