@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Funcionários</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Funcionários</h1>
+        <p>Gerenciamento de funcionários</p>
+    </header>
+
+    <main>
+
+        <section class="cadastro">
+
+            <h2>Cadastrar funcionário</h2>
+
+            <form id="formFuncionario">
+
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite o nome"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite o e-mail"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    Cadastrar
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <section class="lista">
+
+            <div class="topo-lista">
+
+                <div>
+                    <h2>Funcionários cadastrados</h2>
+                    <span id="contador">0 funcionários</span>
+                </div>
+
+                <input
+                    type="text"
+                    id="buscar"
+                    placeholder="🔎 Buscar funcionário..."
+                >
+
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Ações</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="listaFuncionarios">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
