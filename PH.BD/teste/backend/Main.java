@@ -1,0 +1,43 @@
+
+import java.time.LocalDate;
+
+public class Main {
+    public static void main(String[] args) {
+
+        FuncionarioDAO dao = new FuncionarioDAO();
+
+        try {
+            // Criar funcionário de teste
+            Funcionario funcionario = new Funcionario(
+                "João Silva",
+                "joaosilva@gmail.com",
+                "11999999999",
+                "Desenvolvedor",
+                "Tecnologia",
+                LocalDate.of(2026, 11, 22)
+            );
+
+            // Cadastrar
+            dao.cadastrar(funcionario);
+            System.out.println("Funcionário cadastrado!");
+
+            // Listar funcionários
+            System.out.println("\nLISTA DE FUNCIONÁRIOS:");
+
+            for (Funcionario f : dao.listar()) {
+                System.out.println("----------------------");
+                System.out.println("ID: " + f.getId());
+                System.out.println("Nome: " + f.getNome());
+                System.out.println("Email: " + f.getEmail());
+                System.out.println("Telefone: " + f.getTelefone());
+                System.out.println("Cargo: " + f.getCargo());
+                System.out.println("Departamento: " + f.getDepartamento());
+                System.out.println("Admissão: " + f.getDataAdmissao());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao executar: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
